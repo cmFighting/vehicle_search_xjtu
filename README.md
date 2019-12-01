@@ -4,7 +4,10 @@
 
 ## 小组成员
 西安交通大学软件学院场景检索与检测组
-吴潇、宋康、刘敬乐、宋晨明
+
+小组成员:吴潇、宋康、刘敬乐、宋晨明
+
+指导老师:[李垚辰](http://gr.xjtu.edu.cn/web/yaochenli)
 
 ## 代码结构
 ```
@@ -62,6 +65,7 @@ python RepNetV3.py
 
 ## 参考
 [RepNet-MDNet-VehicleReID](https://github.com/CaptainEven/RepNet-MDNet-VehicleReID)
+
 [Deep Relative Distance Learning: Tell the Difference Between Similar Vehicles](https://github.com/CaptainEven/RepNet-MDNet-VehicleReID)
 
 
