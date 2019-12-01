@@ -55,9 +55,16 @@ python RepNetV3.py
 * 添加训练模块代码
 
 ## 运行截图
+
 ![avatar1](ui_imgs/img1.jpg)
-![avatar1](ui_imgs/img1.jpg)
-![avatar1](ui_imgs/img1.jpg)
+
+![avatar1](ui_imgs/img2.jpg)
+
+## 参考
+[RepNet-MDNet-VehicleReID](https://github.com/CaptainEven/RepNet-MDNet-VehicleReID)
+[Deep Relative Distance Learning: Tell the Difference Between Similar Vehicles](https://github.com/CaptainEven/RepNet-MDNet-VehicleReID)
+
+
 ## License
 [MIT](https://doge.mit-license.org/)
 
