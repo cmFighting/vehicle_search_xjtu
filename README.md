@@ -22,6 +22,8 @@
 >RepNetV2.py 修改的第二个版本的代码，命令行运行，需要给定图片路径， 主体代码从2013行开始， 有相关注释
 >RepNetV3.py 修改的第三个版本的代码，直接运行，图形化界面操作, 主体代码从2021行开始，有相关注释
 >ui_widget.py ui界面设计，使用pyqt5
+*** 新增相似度计算 ****
+>cal_feature.py
 ```
 ## 如何运行
 首先请安装anaconda，为了提高下载速度，请将源更换为国内的源
@@ -50,6 +52,11 @@ python RepNetV2.py -i <vehicle_image>
 OR
 ```
 python RepNetV3.py
+```
+
+相似度计算：
+```
+python cal_feature.py 需要更改源代码来更换图片
 ```
 ## 改进地方
 * 图形化界面，部分地方改成线程调用

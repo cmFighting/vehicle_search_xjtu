@@ -1154,6 +1154,7 @@ def get_th_acc_VID(resume,
 
     sims, labels = [], []
     for pair in pairs:
+        # 最后得到的这个特征图应该是字典的形式，通过字典的形式来得到具体的特征图的计算
         img_path_1 = img_dir + '/' + pair[0] + '.jpg'
         img_path_2 = img_dir + '/' + pair[1] + '.jpg'
         sim = cosin_metric(feature_map[img_path_1],
@@ -1163,12 +1164,15 @@ def get_th_acc_VID(resume,
         labels.append(label)
 
     # 统计最佳阈值及其对应的准确率
+    # 他是对所有的图像计算特征图，将这个特征提取出来，最后利用cosin_metric来计算特征
     acc, th = cal_accuracy(sims, labels)
     print('=> best threshold: %.3f, accuracy: %.3f%%' % (th, acc * 100.0))
     return acc, th
 
 
-# 统计阈值和准确率: Car Match数据集
+# 统计阈值和准确率: Car Match数据集，就是按照车辆匹配去整个数据集
+# 我们的目的是将单个批次的数据取出来，然后选择合适的阈值， 其中统计阈值这部分也比较重要
+# 按照题目中给出的最佳阈值是0.295
 def test_car_match_data(resume,
                         pair_set_txt,
                         img_root,
@@ -1586,24 +1590,28 @@ if __name__ == '__main__':
 
     # test_init_weight()
 
-    # train_mc(freeze_feature=False,
-    #          resume=resume)
+    # 测试在
+    # train_mc(freeze_feature=False, resume=resume)
 
     # train(resume=resume)
     #train(resume=None)  # 从头开始训练
 
     # train(resume=resume)
 
-    # ----------------------------------- 测试环节
-    viz_results(resume=resume,
-                data_root=data_root)
+    # ----------------------------------- 测试环节 第一个函数是测试图像可视化
+    # 测试函数一，读取图像，并给出图像的id信息
+    # viz_results(resume=resume,
+    #             data_root=data_root)
 
     # *** 后面两个暂时不可以使用 ***
-    # test_car_match_data(resume=resume,
-    #                     pair_set_txt='/mnt/diskc/even/Car_DR/ArcFace_pytorch/data/pair_set_car.txt',
-    #                     img_root='/mnt/diskc/even/CarReIDCrop',  # CarReID_data
-    #                     batch_size=16)
+    # 测试车辆的匹配数据，需要用到pairset， 这里是实验中提到到第二个实验，测试图像检索的准确度
+    # rsume给出的是模型，dataroot给出的是图像的路径， batchsize是进行测试时的大小，一个批次是16
+    test_car_match_data(resume=resume,
+                        pair_set_txt='/mnt/diskc/even/Car_DR/ArcFace_pytorch/data/pair_set_car.txt',
+                        img_root='/mnt/diskc/even/CarReIDCrop',  # CarReID_data
+                        batch_size=16)
 
+    # 测试图像的在车辆检索上的准确度，这个是实验中提到的第三个实验
     # get_th_acc_VID(resume=resume,
     #                pair_set_txt='/home/asus/design_biye/target_detection/reId/VehicleReid/dataset/VehicleID_V1.0/attribute/test.txt',
     #                img_dir='/home/asus/design_biye/target_detection/reId/VehicleReid/dataset/VehicleID_V1.0/image',

@@ -65,9 +65,10 @@ def train(resume):
 
     # loss function
     loss_func_1 = torch.nn.CrossEntropyLoss().cuda()
+    # 这边是自己写的一个损失函数
     loss_func_2 = FocalLoss(gamma=2).cuda()
 
-    # optimization function
+    # optimization function， 随机梯度下降
     optimizer = torch.optim.SGD(net.parameters(),
                                 lr=1e-3,
                                 momentum=9e-1,
